@@ -102,6 +102,7 @@ final class Plugin implements HandlesArguments
     private function extractPayload(string $method, string $argument): array
     {
         try {
+            // @phpstan-ignore-next-line
             return (array) json_decode(str_replace("--{$method}=", '', $argument),
                 true, 512, JSON_THROW_ON_ERROR);
         } catch (\JsonException) {
